@@ -17,6 +17,8 @@ vnoremap gb <esc>`<lt>:exec 'norm '.visualmode().'`>'<cr>
 nnoremap <C-J> <C-E>
 nnoremap <C-K> <C-Y>
 
+nnoremap <C-e> :execute "e " . expand('%:h')<cr>
+
 nnoremap <space> za
 
 "Wrap word in quotes
