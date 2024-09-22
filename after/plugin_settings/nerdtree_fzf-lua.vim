@@ -32,7 +32,7 @@ function! NERDTreeOpenGrep()
   endif
 
 
-  execute "FzfLua live_grep cwd=" . l:node.path.str()
+  execute "FzfLua live_grep_glob cwd=" . l:node.path.str()
 endfunction
 
 " inside buffer: open FZF for directory
@@ -65,7 +65,7 @@ function! BufferOpenGrep(visual)
 
   echo "search for " . l:search
 
-  execute "FzfLua live_grep cwd=" . l:buffer_git_path . " search=" . l:search
+  execute "FzfLua live_grep_glob cwd=" . l:buffer_git_path . " search=" . l:search
 endfunction
 
 " nerdtree mappings are defined in the filetype plugins
