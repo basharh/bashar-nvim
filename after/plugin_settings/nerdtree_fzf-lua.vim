@@ -1,4 +1,4 @@
-if !exists('g:loaded_fzf_vim')
+if !exists('g:loaded_fzf_lua')
   finish
 endif
 
@@ -8,31 +8,31 @@ endif
 
 " on nerdtree dir node: open FZF for directory
 function! NERDTreeOpenFZF()
-    let l:node = g:NERDTreeFileNode.GetSelected()
+  let l:node = g:NERDTreeFileNode.GetSelected()
 
-    if empty(l:node)
-        return
-    endif
+  if empty(l:node)
+    return
+  endif
 
-    let l:path = l:node.path.str()
+  let l:path = l:node.path.str()
 
-    if !isdirectory(l:path)
-      let l:path = fnamemodify(l:path, ":h")
-    endif
+  if !isdirectory(l:path)
+    let l:path = fnamemodify(l:path, ":h")
+  endif
 
-    execute "FZF " . l:path
+  execute "FzfLua files cwd=" . l:path
 endfunction
 
 " on nerdtree dir node: grep directory
 function! NERDTreeOpenGrep()
-    let l:node = g:NERDTreeFileNode.GetSelected()
+  let l:node = g:NERDTreeFileNode.GetSelected()
 
-    if empty(l:node)
-        return
-    endif
+  if empty(l:node)
+    return
+  endif
 
-    call fzf#vim#grep2("rg --column --line-number --no-heading --color=always --smart-case",
-      \ "", fzf#vim#with_preview({'dir': l:node.path.str()}))
+
+  execute "FzfLua live_grep cwd=" . l:node.path.str()
 endfunction
 
 " inside buffer: open FZF for directory
@@ -43,7 +43,7 @@ function! BufferOpenFZF()
       return
   endif
 
-  execute "FZF " . l:buffer_git_path
+  execute "FzfLua files cwd=" . l:buffer_git_path
 endfunction
 
 " inside buffer: grep a git directory of the file
@@ -63,12 +63,12 @@ function! BufferOpenGrep(visual)
       return
   endif
 
-  call fzf#vim#grep2("rg --column --line-number --no-heading --color=always --smart-case", l:search,
-    \ fzf#vim#with_preview({'dir': l:buffer_git_path}))
+  echo "search for " . l:search
+
+  execute "FzfLua live_grep cwd=" . l:buffer_git_path . " search=" . l:search
 endfunction
 
 " nerdtree mappings are defined in the filetype plugins
 nnoremap <leader>zf :call BufferOpenFZF()<cr>
 nnoremap <leader>zg :call BufferOpenGrep(0)<cr>
 vnoremap <leader>zg :call BufferOpenGrep(1)<cr>
-
