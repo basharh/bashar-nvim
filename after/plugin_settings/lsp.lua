@@ -1,4 +1,5 @@
 require'lspconfig'.dartls.setup{}
+require'lspconfig'.ts_ls.setup{}
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -85,4 +86,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.diagnostic.config {
   float = { border = "rounded" },
+  virtual_text = false
 }

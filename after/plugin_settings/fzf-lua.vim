@@ -12,3 +12,5 @@ nnoremap <leader>lg <cmd>lua require('fzf-lua').grep_project()<CR>
 
 nnoremap <leader>zd <cmd>lua require('fzf-lua')
       \ .files({ raw_cmd = 'fd -H --glob -t d -d 4 ".git" ~/work \| xargs dirname' })<CR>
+
+nnoremap <leader>zb <cmd>lua require('fzf-lua').buffers()<CR>
