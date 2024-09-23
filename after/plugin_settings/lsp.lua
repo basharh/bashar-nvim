@@ -1,4 +1,4 @@
-require'lspconfig'.dartls.setup{}
+--require'lspconfig'.dartls.setup{}
 require'lspconfig'.ts_ls.setup{}
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -88,3 +88,7 @@ vim.diagnostic.config {
   float = { border = "rounded" },
   virtual_text = false
 }
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})

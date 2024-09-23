@@ -1,3 +1,5 @@
+finish
+
 if exists("loaded_bashar_flutter")
   finish
 endif
