@@ -1,7 +1,7 @@
 require("gruvbox").setup({
-    overrides = {
-        Normal = { bg = "#1d2021"}
-    }
+  --overrides = {
+    --Normal = { bg = "#1d2021"}
+  --}
 })
 
 vim.o.background = "dark"
