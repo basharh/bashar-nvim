@@ -2,6 +2,7 @@ if !exists('g:loaded_fzf_lua')
   finish
 endif
 
+
 nnoremap <leader>la <cmd>lua require('fzf-lua').lsp_code_actions()<CR>
 nnoremap <leader>lr <cmd>lua require('fzf-lua').lsp_references()<CR>
 nnoremap <leader>ld <cmd>lua require('fzf-lua').lsp_declarations()<CR>
@@ -16,6 +17,7 @@ nnoremap <leader>zb <cmd>lua require('fzf-lua').buffers()<CR>
 nnoremap <leader>zl <cmd>lua require('fzf-lua').lines()<CR>
 nnoremap <leader>zB <cmd>lua require('fzf-lua').git_branches()<CR>
 nnoremap <leader>zt <cmd>lua require('fzf-lua').treesitter()<CR>
+nnoremap <leader>zh <cmd>lua require('fzf-lua').command_history()<CR>
 
 ":lua require'fzf-lua'.fzf_exec("ls", { winopts = { height=0.33, width=0.66 } })
 
