@@ -2,9 +2,19 @@ local actions = require "fzf-lua.actions"
 local map = vim.keymap.set
 
 require 'fzf-lua'.setup {
+  fzf_opts = {
+    ["--exact"] = true,
+  },
   keymap = {
     fzf = {
-      true, -- do not inherit from defaults
+      true,
+      ["ctrl-u"] = "half-page-up",
+      ["ctrl-d"] = "half-page-down",
+      ["alt-u"]    = "preview-page-up",
+      ["alt-d"]    = "preview-page-down"
+    },
+    treesitter = {
+      true,
       ["ctrl-u"] = "half-page-up",
       ["ctrl-d"] = "half-page-down",
       ["alt-u"]    = "preview-page-up",
@@ -39,6 +49,6 @@ map("n", "<leader>zh", require('fzf-lua').command_history, {})
 map("n", "<leader>zd", require('fzf').fzf_list_work_directories, {}) -- all repo branches
 
 -- <leader>g git shortcuts
-map("n", "<leader>gc", require('fzf-lua').git_bcommits, {})
+map("n", "<leader>gc", require('fzf-lua').git_bcommits, { desc = "show commits in current branch" })
 map("n", "<leader>gf", function() require('fzf').fzf_list_branch_files("HEAD") end, {}) -- all files changed in branch
 map("n", "<leader>gb", require('fzf').fzf_list_current_repo_branches, {}) -- all repo branches

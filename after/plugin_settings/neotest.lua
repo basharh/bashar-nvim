@@ -9,6 +9,17 @@ require("neotest").setup({
     --}),
   },
   log_level = vim.log.levels.INFO,
+  summary = {
+    animated = true,
+    count = true,
+    enabled = true,
+    expand_errors = true,
+    follow = true,
+    mappings = {
+      watch = "W"
+    },
+    open = "botright vsplit | vertical resize 50"
+  }
 })
 
 vim.keymap.set("n", "<leader>tt", function() require("neotest").summary.toggle() end)

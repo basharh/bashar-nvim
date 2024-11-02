@@ -5,3 +5,4 @@ endif
 let loaded_bashar = 1
 
 runtime! bashar_parts/**/*.vim
+runtime! bashar_parts/**/*.lua

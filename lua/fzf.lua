@@ -1,3 +1,5 @@
+local actions = require "fzf-lua.actions"
+
 local M = {}
 
 -- show all files changed in a branch, preview file diff, Gedit on select
@@ -21,7 +23,7 @@ function M.fzf_list_branch_files(branch)
         require "fzf-lua".shell.raw_preview_action_cmd(function(items)
           local file = require "fzf-lua".path.entry_to_file(items[1])
           return {
-            cmd  = string.format("git diff %s HEAD -- %s | delta", branch, file.path),
+            cmd  = string.format("git diff %s origin/develop -- %s | delta", branch, file.path),
             wrap = "wrap",
           }
         end)
@@ -34,7 +36,11 @@ function M.fzf_list_current_repo_branches()
   --_multiline = false,
   require("fzf-lua").fzf_exec("git branch --all --color", {
       prompt     = "Branches> ",
-      preview    = "git diff {1} | delta",
+      preview    = "git diff {1} origin/develop | delta",
+      actions    = {
+        ["enter"]  = actions.git_switch,
+        ["alt-c"]  = actions.git_checkout,
+      },
       fzf_opts   = { ["--no-multi"] = true },
       _multiline = false,
     })
