@@ -10,15 +10,15 @@ require 'fzf-lua'.setup {
       true,
       ["ctrl-u"] = "half-page-up",
       ["ctrl-d"] = "half-page-down",
-      ["alt-u"]    = "preview-page-up",
-      ["alt-d"]    = "preview-page-down"
+      ["alt-u"]  = "preview-page-up",
+      ["alt-d"]  = "preview-page-down"
     },
     treesitter = {
       true,
       ["ctrl-u"] = "half-page-up",
       ["ctrl-d"] = "half-page-down",
-      ["alt-u"]    = "preview-page-up",
-      ["alt-d"]    = "preview-page-down"
+      ["alt-u"]  = "preview-page-up",
+      ["alt-d"]  = "preview-page-down"
     }
   },
   buffers = {
@@ -50,5 +50,8 @@ map("n", "<leader>zd", require('fzf').fzf_list_work_directories, {}) -- all repo
 
 -- <leader>g git shortcuts
 map("n", "<leader>gc", require('fzf-lua').git_bcommits, { desc = "show commits in current branch" })
+map("n", "<leader>gC", require('fzf-lua').git_commits, { desc = "show commits for a single file" })
 map("n", "<leader>gf", function() require('fzf').fzf_list_branch_files("HEAD") end, {}) -- all files changed in branch
-map("n", "<leader>gb", require('fzf').fzf_list_current_repo_branches, {}) -- all repo branches
+map("n", "<leader>gF", require('fzf-lua').git_files, {})                                -- all files changed in branch
+map("n", "<leader>gb", require('fzf').fzf_list_current_repo_branches, {})               -- all repo branches
+map("n", "<leader>gs", require('fzf-lua').git_status, {})                               -- all repo branches
