@@ -20,6 +20,7 @@ nnoremap <leader>zl <cmd>lua require('fzf-lua').lines()<CR>
 nnoremap <leader>zB <cmd>lua require('fzf-lua').git_branches()<CR>
 nnoremap <leader>zt <cmd>lua require('fzf-lua').treesitter()<CR>
 nnoremap <leader>zh <cmd>lua require('fzf-lua').command_history()<CR>
+vnoremap <leader>zh <cmd>lua require('fzf-lua').command_history()<CR>
 
 nnoremap <leader>gb <cmd>lua require('fzf-lua').git_bcommits()<CR>
 

@@ -23,7 +23,7 @@ function M.fzf_list_branch_files(branch)
         require "fzf-lua".shell.raw_preview_action_cmd(function(items)
           local file = require "fzf-lua".path.entry_to_file(items[1])
           return {
-            cmd  = string.format("git diff %s origin/develop -- %s | delta", branch, file.path),
+            cmd  = string.format("git diff origin/develop %s -- %s | delta", branch, file.path),
             wrap = "wrap",
           }
         end)

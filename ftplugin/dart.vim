@@ -2,3 +2,5 @@
 " that errorformat can understand
 let &makeprg='cd %:p:h && dart-errors $(git rev-parse --show-toplevel)'
 let &errorformat='%t - %f:%l:%c - %m'
+
+nnoremap <C-t> :call OpenDartTestFile()<CR>

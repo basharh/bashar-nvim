@@ -6,5 +6,7 @@ nnoremap <leader>gg :Git<CR>
 nnoremap <leader>ga :Git add %<CR>
 nnoremap <leader>gd :Gvdiffsplit<CR>
 nnoremap <leader>gs :Git status<CR>
-nnoremap <leader>gD :rightb Gvdiffsplit origin/develop...HEAD<CR>
+"nnoremap <leader>gD :rightb Gvdiffsplit origin/develop...HEAD<CR>
+nnoremap <leader>gD :lefta Gvdiffsplit origin/develop<CR>
+
 nnoremap <leader>gR :GRename

@@ -26,6 +26,15 @@ require 'fzf-lua'.setup {
       ["alt-x"] = { fn = actions.buf_del, reload = true },
       ["ctrl-x"] = false,
     },
+  },
+  git = {
+    status = {
+      actions = {
+        -- false this should work but doesn't
+        --["s"] = { fn = actions.git_stage, reload = true },
+        --["u"] = { fn = actions.git_unstage, reload = true },
+      },
+    }
   }
 }
 
